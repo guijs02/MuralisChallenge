@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteMuralis.WebApi", "TesteMuralis.WebApi.csproj", "{A70A8975-5CF9-493D-9C7E-BF173622442C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{609CAE09-3633-4A2E-A0A3-7C50AC53B996}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muralis.Domain", "..\Muralis.Domain\Muralis.Domain.csproj", "{BAFF4EE2-012B-4119-91CB-76CB5C156C52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muralis.Infra", "..\Muralis.Infra\Muralis.Infra.csproj", "{5874DB34-21EE-4B7E-8BD0-DD1060BAC93A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muralis.Application", "..\Muralis.Application\Muralis.Application.csproj", "{37B12520-9F75-413A-80C6-1700919C84FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A70A8975-5CF9-493D-9C7E-BF173622442C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A70A8975-5CF9-493D-9C7E-BF173622442C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A70A8975-5CF9-493D-9C7E-BF173622442C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A70A8975-5CF9-493D-9C7E-BF173622442C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAFF4EE2-012B-4119-91CB-76CB5C156C52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAFF4EE2-012B-4119-91CB-76CB5C156C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAFF4EE2-012B-4119-91CB-76CB5C156C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAFF4EE2-012B-4119-91CB-76CB5C156C52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5874DB34-21EE-4B7E-8BD0-DD1060BAC93A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5874DB34-21EE-4B7E-8BD0-DD1060BAC93A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5874DB34-21EE-4B7E-8BD0-DD1060BAC93A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5874DB34-21EE-4B7E-8BD0-DD1060BAC93A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B12520-9F75-413A-80C6-1700919C84FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B12520-9F75-413A-80C6-1700919C84FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B12520-9F75-413A-80C6-1700919C84FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B12520-9F75-413A-80C6-1700919C84FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A70A8975-5CF9-493D-9C7E-BF173622442C} = {609CAE09-3633-4A2E-A0A3-7C50AC53B996}
+		{609CAE09-3633-4A2E-A0A3-7C50AC53B996} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{BAFF4EE2-012B-4119-91CB-76CB5C156C52} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{5874DB34-21EE-4B7E-8BD0-DD1060BAC93A} = {609CAE09-3633-4A2E-A0A3-7C50AC53B996}
+		{37B12520-9F75-413A-80C6-1700919C84FC} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {74C6C4EE-BCB5-45FB-967D-BD515E6854F2}
+	EndGlobalSection
+EndGlobal
