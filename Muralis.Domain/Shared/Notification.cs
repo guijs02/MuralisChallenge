@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Muralis.Domain.Shared
+﻿namespace Muralis.Domain.Shared
 {
     public class NotificationErrorProps(string context, string message)
     {
@@ -37,8 +31,5 @@ namespace Muralis.Domain.Shared
         }
         public bool PossuiErros()
             => Errors.Count != 0;
-
-        public List<NotificationErrorProps> ObterErros()
-         => Errors;
     }
 }

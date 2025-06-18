@@ -5,13 +5,13 @@ namespace Muralis.Application.Services
 {
     public interface IMuralisService
     {
-        public Task<Resposta<bool>> Adicionar(ClienteDto cliente);
-        public Task<Resposta<bool>> Alterar(AlterarClienteDto cliente, Guid id);
-        public Task<Resposta<bool>> Deletar(Guid id);
-        public Task<RespostaPaginada<List<ListaClientePaginadaOutput>>> ObterTodosPaginadoAsync(int numeroPagina, int tamanhoPagina);
-        public Task<Resposta<ObterClienteNomeOutput>> ObterPorNome(string nome);
-        Task<Resposta<bool>> AdicionarContato(Guid clienteId, ContatoDto dto);
-        Task<Resposta<bool>> AlterarContato(Guid clienteId, Guid contatoId, ContatoDto dto);
-        Task<Resposta<bool>> DeletarContato(Guid clienteId, Guid contatoId);
+        Task<Resposta<bool>> AdicionarClienteAsync(ClienteDto cliente);
+        Task<Resposta<bool>> AlterarClienteAsync(AlterarClienteDto cliente, Guid id);
+        Task<Resposta<bool>> DeletarClienteAsync(Guid id);
+        Task<RespostaPaginada<List<ListaClientePaginadaOutput>>> ObterTodosPaginadoAsync(int numeroPagina, int tamanhoPagina);
+        Task<Resposta<ObterClienteNomeOutput>> ObterPorNomeClienteAsync(string nome);
+        Task<Resposta<bool>> AdicionarContatoAsync(Guid clienteId, ContatoDto dto);
+        Task<Resposta<bool>> AlterarContatoAsync(Guid clienteId, Guid contatoId, ContatoDto dto);
+        Task<Resposta<bool>> DeletarContatoAsync(Guid clienteId, Guid contatoId);
     }
 }

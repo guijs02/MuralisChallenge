@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace Muralis.Domain.Response
 {
-    public class Resposta<T>(T? dado,
-     string? mensagem = null,
-     int codigo = 200)
+    public class Resposta<T>(T? dado, string? mensagem = null, int codigo = 200)
     {
         public T? Dados { get; set; } = dado;
         public int CodigoStatus => codigo;

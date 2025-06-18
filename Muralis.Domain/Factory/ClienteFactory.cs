@@ -9,21 +9,21 @@ namespace Muralis.Domain.Factory
         public static Cliente Criar(ClienteProps cliente)
         {
             var endereco = new Endereco(
-            logradouro: cliente.Logradouro, // Ajuste conforme necessário
-            numero: cliente.Numero,
-            complemento: cliente.Complemento, // Ajuste conforme necessário
-            cidade: cliente.Cidade, // Ajuste conforme necessário
-            cep: cliente.Cep
-          );
+                logradouro: cliente.Logradouro, 
+                numero: cliente.Numero,
+                complemento: cliente.Complemento, 
+                cidade: cliente.Cidade, 
+                cep: cliente.Cep
+            );
 
-            Guid clienteId = Guid.NewGuid(); // Gerar um novo ID para o cliente
+            Guid clienteId = Guid.NewGuid(); 
 
             List<Contato> Contatos = [];
 
             cliente.Contatos.ForEach(c =>
             {
                 Contatos.Add(new (
-                    id: Guid.NewGuid(), // Gerar um novo ID para cada contato
+                    id: Guid.NewGuid(), 
                     tipo: c.Tipo,
                     texto: c.Texto,
                     clienteId: clienteId
@@ -39,8 +39,6 @@ namespace Muralis.Domain.Factory
 
             return clienteDomain;
         }
-
-
     }
 
     public class ClienteProps
@@ -50,8 +48,8 @@ namespace Muralis.Domain.Factory
         public string Numero { get; set; } = string.Empty;
         public string Logradouro { get; set; } = string.Empty;
         public string Complemento { get; set; } = string.Empty;
+        public string Cidade { get; set; } = string.Empty;
         public List<ContatoProps> Contatos { get; set; } = new List<ContatoProps>();
-        public string Cidade { get; set; }
     }
     public class ContatoProps
     {

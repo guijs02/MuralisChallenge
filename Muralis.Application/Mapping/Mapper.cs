@@ -19,9 +19,9 @@ namespace Muralis.Application.Mapping
                 Nome = cliente.Nome,
                 Cep = viaCep.Cep,
                 Numero = cliente.Numero,
-                Logradouro = viaCep.Logradouro, // Ajuste conforme necessário
-                Complemento = viaCep.Complemento, // Ajuste conforme necessário
-                Cidade = viaCep.Cidade, // Ajuste conforme necessário
+                Logradouro = viaCep.Logradouro, 
+                Complemento = viaCep.Complemento, 
+                Cidade = viaCep.Cidade, 
                 Contatos = cliente.Contatos?.Select(c => new ContatoProps
                 {
                     Tipo = c.Tipo,
@@ -38,14 +38,9 @@ namespace Muralis.Application.Mapping
                 Nome = cliente.Nome,
                 Cep = viaCep.Cep,
                 Numero = cliente.Numero,
-                Logradouro = viaCep.Logradouro, // Ajuste conforme necessário
-                Complemento = viaCep.Complemento, // Ajuste conforme necessário
-                Cidade = viaCep.Cidade, // Ajuste conforme necessário
-                Contatos = cliente.Contatos?.Select(c => new ContatoProps
-                {
-                    Tipo = c.Tipo,
-                    Texto = c.Texto
-                }).ToList() ?? []
+                Logradouro = viaCep.Logradouro, 
+                Complemento = viaCep.Complemento, 
+                Cidade = viaCep.Cidade, 
             };
 
             return clienteProps;

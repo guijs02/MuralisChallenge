@@ -16,6 +16,5 @@ namespace Muralis.Application.Dtos
         public string Cep { get; set; } = string.Empty;
         [Required]
         public string Numero { get; set; } = string.Empty;
-        public List<ContatoDto> Contatos { get; set; } = [];
     }
 }

@@ -9,11 +9,11 @@ namespace Muralis.Domain.Entitiy
 {
     public class Entity : Notifiable
     {
-        public Guid Id { get; private set; }
         public Entity(Guid id)
         {
             Id = id;
         }
+        public Guid Id { get; private set; }
     }
 
 }

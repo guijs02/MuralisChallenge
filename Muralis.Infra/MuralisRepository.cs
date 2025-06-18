@@ -5,17 +5,13 @@ using Muralis.Domain.Repositories;
 using Muralis.Domain.Response;
 using Muralis.Infra.Data;
 using Muralis.Infra.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace Muralis.Infra
 {
     public class MuralisRepository(MuralisAppContext context) : IMuralisRepository
     {
-        public async Task<Resposta<bool>> AdicionarAsync(Cliente cliente)
+        public async Task<Resposta<bool>> AdicionarClienteAsync(Cliente cliente)
         {
             try
             {
@@ -35,7 +31,7 @@ namespace Muralis.Infra
                 {
                     foreach (var item in cliente.Contatos)
                     {
-                        model.Contatos.Add(new Models.ContatoModel
+                        model.Contatos.Add(new ContatoModel
                         {
                             Id = item.Id,
                             Texto = item.Texto,
@@ -54,7 +50,7 @@ namespace Muralis.Infra
             }
         }
 
-        public async Task<Resposta<bool>> AlterarAsync(Cliente cliente, Guid id)
+        public async Task<Resposta<bool>> AlterarClienteAsync(Cliente cliente, Guid id)
         {
             try
             {
@@ -81,7 +77,7 @@ namespace Muralis.Infra
             }
         }
 
-        public async Task<Resposta<bool>> DeletarAsync(Guid id)
+        public async Task<Resposta<bool>> DeletarClienteAsync(Guid id)
         {
             try
             {
@@ -99,7 +95,7 @@ namespace Muralis.Infra
             }
         }
 
-        public async Task<Resposta<ObterClienteNomeOutput>> ObterPorNomeAsync(string nome)
+        public async Task<Resposta<ObterClienteNomeOutput>> ObterPorNomeClienteAsync(string nome)
         {
             try
             {

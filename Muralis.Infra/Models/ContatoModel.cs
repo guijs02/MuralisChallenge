@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Muralis.Infra.Models
 {
@@ -14,6 +9,6 @@ namespace Muralis.Infra.Models
         public string Tipo { get; set; } = string.Empty;
         public string Texto { get; set; } = string.Empty;
         public ClienteModel Cliente { get; set; } = null!;
-        public Guid ClienteId { get; set; } 
+        public Guid ClienteId { get; set; }
     }
 }

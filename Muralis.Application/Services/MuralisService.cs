@@ -26,7 +26,7 @@ namespace Muralis.Application.Services
             _cepService = cepService;
         }
 
-        public async Task<Resposta<bool>> Adicionar(ClienteDto cliente)
+        public async Task<Resposta<bool>> AdicionarClienteAsync(ClienteDto cliente)
         {
             
             var viaCep = await _cepService.BuscarPorCepAsync(cliente.Cep);
@@ -51,10 +51,10 @@ namespace Muralis.Application.Services
             }
 
             // Chama o repositório
-            return await _muralisRepository.AdicionarAsync(clienteDomain);
+            return await _muralisRepository.AdicionarClienteAsync(clienteDomain);
         }
 
-        public async Task<Resposta<bool>> Alterar(AlterarClienteDto cliente, Guid id)
+        public async Task<Resposta<bool>> AlterarClienteAsync(AlterarClienteDto cliente, Guid id)
         {
             var viaCep = await _cepService.BuscarPorCepAsync(cliente.Cep);
 
@@ -76,37 +76,36 @@ namespace Muralis.Application.Services
                                     (int)HttpStatusCode.BadRequest);
             }
 
-
-            return await _muralisRepository.AlterarAsync(clienteDomain, id);
+            return await _muralisRepository.AlterarClienteAsync(clienteDomain, id);
         }
 
-        public async Task<Resposta<bool>> Deletar(Guid id)
+        public async Task<Resposta<bool>> DeletarClienteAsync(Guid id)
         {
-            return await _muralisRepository.DeletarAsync(id);
+            return await _muralisRepository.DeletarClienteAsync(id);
         }
 
-        public async Task<Resposta<ObterClienteNomeOutput>> ObterPorNome(string nome)
+        public async Task<Resposta<ObterClienteNomeOutput>> ObterPorNomeClienteAsync(string nome)
         {
-            return await _muralisRepository.ObterPorNomeAsync(nome);
+            return await _muralisRepository.ObterPorNomeClienteAsync(nome);
         }
 
         public async Task<RespostaPaginada<List<ListaClientePaginadaOutput>>> ObterTodosPaginadoAsync(int numeroPagina, int tamanhoPagina)
         {
             return await _muralisRepository.ObterTodosPaginadoAsync(numeroPagina, tamanhoPagina);
         }
-        public async Task<Resposta<bool>> AdicionarContato(Guid clienteId, ContatoDto dto)
+        public async Task<Resposta<bool>> AdicionarContatoAsync(Guid clienteId, ContatoDto dto)
         {
             var contato = new Contato(Guid.NewGuid(), dto.Tipo, dto.Texto, clienteId);
             return await _muralisRepository.AdicionarContatoAsync(clienteId, contato);
         }
 
-        public async Task<Resposta<bool>> AlterarContato(Guid clienteId, Guid contatoId, ContatoDto dto)
+        public async Task<Resposta<bool>> AlterarContatoAsync(Guid clienteId, Guid contatoId, ContatoDto dto)
         {
             var contato = new Contato(Guid.NewGuid(), dto.Tipo, dto.Texto, clienteId);
             return await _muralisRepository.AlterarContatoAsync(clienteId, contatoId, contato);
         }
 
-        public async Task<Resposta<bool>> DeletarContato(Guid clienteId, Guid contatoId)
+        public async Task<Resposta<bool>> DeletarContatoAsync(Guid clienteId, Guid contatoId)
         {
             return await _muralisRepository.DeletarContatoAsync(clienteId, contatoId);
         }

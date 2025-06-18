@@ -18,6 +18,8 @@
             Complemento = complemento;
             Cidade = cidade;
             Cep = cep;
+
+            Validar();
         }
 
         public override bool Equals(object? obj)
@@ -31,7 +33,7 @@
                    Cep == endereco.Cep;
         }
 
-        public void Validate()
+        public void Validar()
         {
             if (string.IsNullOrWhiteSpace(Logradouro))
                Notification.AddErro(nameof(Endereco), "Logradouro não pode ser vazio.");

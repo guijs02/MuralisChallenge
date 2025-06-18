@@ -33,6 +33,7 @@ namespace TesteMuralis
             }
 
             app.MapClienteEndpoints(); 
+            app.MapContatosEndpoints(); 
 
             app.UseHttpsRedirection();
 

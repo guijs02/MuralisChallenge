@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Muralis.Domain.Response
+﻿namespace Muralis.Domain.Response
 {
     public class RespostaPaginada<T> : Resposta<T> where T : class
     {

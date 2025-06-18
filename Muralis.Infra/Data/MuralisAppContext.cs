@@ -14,7 +14,6 @@ namespace Muralis.Infra.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // Configure your entities here
         }
     }
 }
