@@ -23,7 +23,7 @@ namespace Muralis.Application.Services
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var viaCep = JsonSerializer.Deserialize<ViaCepResponse>(json);
+            var viaCep = JsonSerializer.Deserialize<ViaCepResponse>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
             if (viaCep is null)
                 return new Resposta<CepResult>(null, codigo: (int)HttpStatusCode.InternalServerError);

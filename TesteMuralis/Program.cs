@@ -1,5 +1,8 @@
-using Muralis.Infra.DIP;
 using Muralis.Application.DIP;
+using Muralis.Application.Services;
+using Muralis.Infra.DIP;
+using TesteMuralis.WebApi.Endpoints;
+
 namespace TesteMuralis
 {
     public class Program
@@ -10,20 +13,26 @@ namespace TesteMuralis
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer(); // Explora os endpoints
+            builder.Services.AddSwaggerGen();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
             builder.Services.AddContext(builder.Configuration);
             builder.Services.AddInfraDependencies();
             builder.Services.AddServices();
+            builder.Services.AddHttpClient<ICepService, CepService>();
+            builder.Services.AddAuthorization();
+            builder.Services.AddControllers();
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.MapOpenApi();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
+
+            app.MapClienteEndpoints(); 
 
             app.UseHttpsRedirection();
 

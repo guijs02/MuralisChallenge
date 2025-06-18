@@ -6,7 +6,7 @@ namespace Muralis.Infra.Models
     [Table("Clientes")]
     public class ClienteModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Nome { get; set; } = string.Empty;
         public string DataCadastro { get; set; } = string.Empty;
         public string Cep { get; set; } = string.Empty;

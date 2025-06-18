@@ -8,7 +8,7 @@ namespace Muralis.Application.DIP
         public static IServiceCollection AddServices(this IServiceCollection service)
         {
             service.AddScoped<IMuralisService, MuralisService>();
-
+            
             return service;
         }
     }

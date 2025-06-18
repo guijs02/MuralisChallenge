@@ -1,26 +1,29 @@
-﻿using Muralis.Domain.ValueObject;
+﻿using Muralis.Domain.Aggregates;
+using Muralis.Domain.Factory;
+using Muralis.Domain.Validators;
+using Muralis.Domain.ValueObject;
 
 namespace Muralis.Domain.Entitiy
 {
-    public class Cliente
+    public class Cliente : Entity
     {
-        public Cliente(string nome, Endereco endereco)
+        public Cliente(Guid id, string nome, Endereco endereco, List<Contato> contatos) : base(id)
         {
             Nome = nome;
             DataCadastro = DateTime.Now;
             Endereco = endereco;
+            Contatos = contatos;
+            Validar();
         }
+        
         public string Nome { get; private set; }
         public DateTime DataCadastro { get; private set; }
         public Endereco Endereco { get; private set; }
+        public List<Contato> Contatos { get; private set; }
 
         public void Validar()
         {
-            if(string.IsNullOrWhiteSpace(Nome))
-                throw new ArgumentException("Nome do cliente não pode ser vazio ou nulo.");
-
-            if (DataCadastro == default)
-                throw new ArgumentException("Data de cadastro inválida.");
+            ValidationFactory.Validate(this, new ClienteValidator());
         }
     }
 }

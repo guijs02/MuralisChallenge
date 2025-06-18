@@ -13,6 +13,5 @@ namespace Muralis.Domain.Response
         public string? Localidade { get; set; }
         public string? Uf { get; set; }
         public string? Complemento { get; set; }
-        public string? Erro { get; set; }
     }
 }
