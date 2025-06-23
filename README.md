@@ -50,7 +50,7 @@ PUT /clientes/{id}/contatos/{contatoId}
 ```json
 {
    "tipo": "email",
-   "texto": "joao@email.com"
+   "texto": "maria@email.com"
 }
 ```
 
