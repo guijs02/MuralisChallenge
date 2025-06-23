@@ -41,7 +41,8 @@ namespace TesteMuralis.WebApi.Endpoints
                 return Results.Json(result, statusCode: result.CodigoStatus);
             });
 
-            contatos.MapDelete("{contatoId}", async ([FromServices] IMuralisService service, Guid id, Guid contatoId) =>
+            contatos.MapDelete("{contatoId}", async ([FromServices] IMuralisService service, 
+                                                     Guid id, Guid contatoId) =>
             {
                 var result = await service.DeletarContatoAsync(id, contatoId);
                 return Results.Json(result, statusCode: result.CodigoStatus);
