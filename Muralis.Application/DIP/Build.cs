@@ -11,5 +11,6 @@ namespace Muralis.Application.DIP
             
             return service;
         }
+
     }
 }

@@ -9,12 +9,8 @@ namespace Muralis.Application.Dtos
 {
     public class ClienteDto
     {
-        [Required]
         public string Nome { get; set; } = string.Empty;
-        [Required]
-        [Length(1,8)]
         public string Cep { get; set; } = string.Empty;
-        [Required]
         public string Numero { get; set; } = string.Empty;
         public List<ContatoDto> Contatos { get; set; } = [];
     }

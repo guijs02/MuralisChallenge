@@ -2,6 +2,13 @@ using Muralis.Application.DIP;
 using Muralis.Application.Services;
 using Muralis.Infra.DIP;
 using TesteMuralis.WebApi.Endpoints;
+using FluentValidation;
+using TesteMuralis.WebApi.Validations;
+using TesteMuralis.WebApi;
+using Muralis.Application.Dtos;
+using TesteMuralis.WebApi.Validations.TesteMuralis.WebApi.Validations;
+using TesteMuralis.WebApi.Common;
+
 
 namespace TesteMuralis
 {
@@ -13,10 +20,10 @@ namespace TesteMuralis
 
             // Add services to the container.
 
-            builder.Services.AddEndpointsApiExplorer(); // Explora os endpoints
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerDocumentation();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddContext(builder.Configuration);
+            builder.Services.AddValidators();
             builder.Services.AddInfraDependencies();
             builder.Services.AddServices();
             builder.Services.AddHttpClient<ICepService, CepService>();
@@ -32,8 +39,9 @@ namespace TesteMuralis
                 app.UseSwaggerUI();
             }
 
-            app.MapClienteEndpoints(); 
-            app.MapContatosEndpoints(); 
+            app.MapClienteEndpoints();
+
+            app.MapContatosEndpoints();
 
             app.UseHttpsRedirection();
 

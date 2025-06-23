@@ -14,29 +14,42 @@ namespace Muralis.Application.Services
 
         public async Task<Resposta<CepResult>?> BuscarPorCepAsync(string cep)
         {
-            var url = $"https://viacep.com.br/ws/{cep}/json/";
+            try
+            {
 
-            var response = await _httpClient.GetAsync(url);
+                var url = $"https://viacep.com.br/ws/{cep}/json/";
 
-            if (!response.IsSuccessStatusCode)
-                return new Resposta<CepResult>(null, codigo: (int)response.StatusCode);
+                var response = await _httpClient.GetAsync(url);
 
-            var json = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                    return new Resposta<CepResult>(null, codigo: (int)response.StatusCode);
 
-            var viaCep = JsonSerializer.Deserialize<ViaCepResponse>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                var json = await response.Content.ReadAsStringAsync();
 
-            if (viaCep is null)
-                return new Resposta<CepResult>(null, codigo: (int)HttpStatusCode.InternalServerError);
+                var viaCep = JsonSerializer.Deserialize<ViaCepResponse>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
-            var cepResult = new CepResult(
-                Cep: viaCep.Cep ?? string.Empty,
-                Logradouro: viaCep.Logradouro ?? string.Empty,
-                Cidade: viaCep.Localidade ?? string.Empty,
-                Estado: viaCep.Uf ?? string.Empty,
-                Complemento: viaCep.Complemento ?? string.Empty
-            );
+                if (viaCep is null)
+                    return new Resposta<CepResult>(null, codigo: (int)HttpStatusCode.InternalServerError);
 
-            return new Resposta<CepResult>(cepResult);
+                var cepResult = new CepResult(
+                    Cep: viaCep.Cep ?? string.Empty,
+                    Logradouro: viaCep.Logradouro ?? string.Empty,
+                    Cidade: viaCep.Localidade ?? string.Empty,
+                    Estado: viaCep.Uf ?? string.Empty,
+                    Complemento: viaCep.Complemento ?? string.Empty
+                );
+
+                return new Resposta<CepResult>(cepResult);
+            }
+            catch (HttpRequestException)
+            {
+                return new Resposta<CepResult>(null, mensagem: "Ocorreu um erro ao se comunicar com via cep api..", (int)HttpStatusCode.InternalServerError);
+            }
+            catch (Exception)
+            {
+                return new Resposta<CepResult>(null, mensagem: "Ocorreu um erro inesperado ao buscar cep...", (int)HttpStatusCode.InternalServerError);
+            }
         }
+
     }
 }

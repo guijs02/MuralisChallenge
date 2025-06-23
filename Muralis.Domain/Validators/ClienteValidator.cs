@@ -19,11 +19,6 @@ namespace Muralis.Domain.Validators
             RuleFor(s => s.DataCadastro)
            .NotEmpty().WithMessage("DataCadastro não deve ser vazio!")
            .NotNull().WithMessage("DataCadastro é obrigatório");
-
-            RuleFor(s => s.Contatos)
-           .NotEmpty().WithMessage("Contatos não deve ser vazio!")
-           .NotNull().WithMessage("Contatos é obrigatório");
-           
         }
     }
 }

@@ -18,11 +18,11 @@ namespace Muralis.Domain.Factory
 
             Guid clienteId = Guid.NewGuid(); 
 
-            List<Contato> Contatos = [];
+            List<Contato> contatos = [];
 
             cliente.Contatos.ForEach(c =>
             {
-                Contatos.Add(new (
+                contatos.Add(new (
                     id: Guid.NewGuid(), 
                     tipo: c.Tipo,
                     texto: c.Texto,
@@ -34,7 +34,7 @@ namespace Muralis.Domain.Factory
                 id: clienteId,
                 nome: cliente.Nome,
                 endereco: endereco,
-                contatos: Contatos
+                contatos: contatos
             );
 
             return clienteDomain;

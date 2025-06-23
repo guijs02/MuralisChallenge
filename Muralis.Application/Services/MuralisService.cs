@@ -5,6 +5,7 @@ using Muralis.Domain.Entitiy;
 using Muralis.Domain.Factory;
 using Muralis.Domain.Repositories;
 using Muralis.Domain.Response;
+using Muralis.Domain.Validators;
 using Muralis.Domain.ValueObject;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,12 @@ namespace Muralis.Application.Services
 
         public async Task<Resposta<bool>> AdicionarClienteAsync(ClienteDto cliente)
         {
-            
+
+            if (CepValidator.ObterCepNormalizado(cliente.Cep) == null)
+            {
+                return new Resposta<bool>(false, "Formato cep invalido", (int)HttpStatusCode.BadRequest);
+            }
+
             var viaCep = await _cepService.BuscarPorCepAsync(cliente.Cep);
 
             if (viaCep is null || !viaCep.Sucesso || viaCep.Dados is null)
@@ -56,6 +62,11 @@ namespace Muralis.Application.Services
 
         public async Task<Resposta<bool>> AlterarClienteAsync(AlterarClienteDto cliente, Guid id)
         {
+            if (CepValidator.ObterCepNormalizado(cliente.Cep) == null)
+            {
+                return new Resposta<bool>(false, "Formato cep invalido", (int)HttpStatusCode.BadRequest);
+            }
+
             var viaCep = await _cepService.BuscarPorCepAsync(cliente.Cep);
 
             if (viaCep is null || !viaCep.Sucesso || viaCep.Dados is null)
