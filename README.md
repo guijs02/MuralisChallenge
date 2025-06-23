@@ -69,10 +69,6 @@ POST /clientes
     {
       "tipo": "email",
       "texto": "joao@email.com"
-    },
-    {
-      "tipo": "telefone",
-      "texto": "11999999999"
     }
   ]
 }
